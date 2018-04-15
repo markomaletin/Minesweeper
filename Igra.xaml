@@ -1,0 +1,84 @@
+﻿<Window x:Class="TVP_Projekat_2_Minesweeper.Igra"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TVP_Projekat_2_Minesweeper"
+        mc:Ignorable="d"
+        Title="Minesweeper" Height="250" Width="200" ResizeMode="NoResize" Closing="gasenjeForme">
+
+    <Window.Icon>
+        <BitmapImage UriSource="C:\Users\Marko\Documents\visual studio 2015\Projects\TVP Projekat 2 Minesweeper\TVP Projekat 2 Minesweeper\Slike\ikonica.ico"/>
+    </Window.Icon>
+    
+    
+    <Window.Resources>
+        <Image x:Key="flag"  Source="C:\Users\Marko\Documents\visual studio 2015\Projects\TVP Projekat 2 Minesweeper\TVP Projekat 2 Minesweeper\Slike\flag.png" Width="30" Height="30"/>
+        <Image x:Key="1" Source="C:\Users\Marko\Documents\visual studio 2015\Projects\TVP Projekat 2 Minesweeper\TVP Projekat 2 Minesweeper\Slike\1.png" Width="10" Height="10"/>
+        <Image x:Key="2" Source="C:\Users\Marko\Documents\visual studio 2015\Projects\TVP Projekat 2 Minesweeper\TVP Projekat 2 Minesweeper\Slike\2.png" Width="30" Height="30"/>
+        <Image x:Key="3" Source="C:\Users\Marko\Documents\visual studio 2015\Projects\TVP Projekat 2 Minesweeper\TVP Projekat 2 Minesweeper\Slike\3.png" Width="30" Height="30"/>
+        <Image x:Key="4" Source="C:\Users\Marko\Documents\visual studio 2015\Projects\TVP Projekat 2 Minesweeper\TVP Projekat 2 Minesweeper\Slike\4.png" Width="30" Height="30"/>
+        <Image x:Key="5" Source="C:\Users\Marko\Documents\visual studio 2015\Projects\TVP Projekat 2 Minesweeper\TVP Projekat 2 Minesweeper\Slike\5.png" Width="10" Height="10"/>
+        <Image x:Key="6" Source="C:\Users\Marko\Documents\visual studio 2015\Projects\TVP Projekat 2 Minesweeper\TVP Projekat 2 Minesweeper\Slike\6.png" Width="30" Height="30"/>
+        <Image x:Key="7" Source="C:\Users\Marko\Documents\visual studio 2015\Projects\TVP Projekat 2 Minesweeper\TVP Projekat 2 Minesweeper\Slike\7.png" Width="30" Height="30"/>
+        <Image x:Key="8" Source="C:\Users\Marko\Documents\visual studio 2015\Projects\TVP Projekat 2 Minesweeper\TVP Projekat 2 Minesweeper\Slike\8.png" Width="30" Height="30"/>
+        <Image x:Key="bomb" Source="C:\Users\Marko\Documents\visual studio 2015\Projects\TVP Projekat 2 Minesweeper\TVP Projekat 2 Minesweeper\Slike\bomb.png" Width="30" Height="30"/>
+        <Image x:Key="Xflag" Source="C:\Users\Marko\Documents\visual studio 2015\Projects\TVP Projekat 2 Minesweeper\TVP Projekat 2 Minesweeper\Slike\Xflag.png" Width="30" Height="30"/>
+        <Image x:Key="bomb_red" Source="C:\Users\Marko\Documents\visual studio 2015\Projects\TVP Projekat 2 Minesweeper\TVP Projekat 2 Minesweeper\Slike\bomb_red.png"/>
+        <Image x:Key="happy" Source="C:\Users\Marko\Documents\visual studio 2015\Projects\TVP Projekat 2 Minesweeper\TVP Projekat 2 Minesweeper\Slike\happy.jpg"/>
+        <Image x:Key="sad" Source="C:\Users\Marko\Documents\visual studio 2015\Projects\TVP Projekat 2 Minesweeper\TVP Projekat 2 Minesweeper\Slike\sad.jpg"/>
+
+
+        <Storyboard x:Key="animacija">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="btnRestart">
+                <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="40"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="btnRestart">
+                <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="40"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="btnRestart">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-2"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="btnRestart">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-9"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+
+    </Window.Resources>
+
+
+    <StackPanel Name="glavni" Orientation="Vertical">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
+            <TextBox x:Name="tbBombe" Style="{StaticResource tb}" Background="#4da6ff" Foreground="White" TextAlignment="Center" Height="40" MinWidth="70" Text="00" FontSize="24" ></TextBox>
+            <Button x:Name="btnRestart" Style="{StaticResource srednje_dugme}" Content="{StaticResource happy}" Height="40" Width="40" Click="btnRestart_Click" RenderTransformOrigin="0.5,0.5" >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <TextBox x:Name="tbVreme" Style="{StaticResource tb}" Background="#4da6ff"  Foreground="White" Height="40" MinWidth="70" Text="00" FontSize="24" TextAlignment="Center" ></TextBox>
+        </StackPanel>
+        <StackPanel Name="matrica" HorizontalAlignment="Center">
+
+        </StackPanel>
+
+    </StackPanel>
+
+
+
+
+
+</Window>
